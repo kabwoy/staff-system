@@ -11,27 +11,30 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+<div class="container" style="width: 50%">
+  <div class="form-group">
+    <%= form.label :first_name%>
+    <%= form.text_field :first_name , class:"form-control"  %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name , class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email , class:"form-control"  %>
   </div>
 
   <div>
     <%= form.label :contact, style: "display: block" %>
-    <%= form.text_field :contact %>
+    <%= form.text_field :contact , class:"form-control"  %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success mt-2" %>
+    <%= link_to "Back to lecturers", lecturers_path ,class:"btn btn-dark mt-2" %>
   </div>
+</div>
 <% end %>

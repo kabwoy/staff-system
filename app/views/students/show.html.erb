@@ -1,10 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @student %>
+<h3>First Name:</h3>
+<p><%= @student.first_name %></p>
+<h3>Last Name: </h3>
+<p><%= @student.last_name %></p>
+<h3>Email:</h3>
+<p><%= @student.email %></p>
+<h3>Contact:</h3>
+<p><%= @student.contact%></p>
 
 <div>
   <%= link_to "Edit this student", edit_student_path(@student) %> |
   <%= link_to "Back to students", students_path %>
 
-  <%= button_to "Destroy this student", @student, method: :delete %>
+  <%= button_to "Destroy this student", @student, method: :delete , class:"btn btn-danger mt-2" %>
 </div>
