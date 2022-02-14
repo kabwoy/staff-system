@@ -24,6 +24,7 @@ class UnitsController < ApplicationController
   # POST /units or /units.json
   def create
     @unit = Unit.new(unit_params)
+    @course = Course.new
 
     respond_to do |format|
       if @unit.save

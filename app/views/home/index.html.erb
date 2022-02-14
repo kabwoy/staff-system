@@ -8,10 +8,12 @@
 
 
 
-<% else %>
+<% elsif current_user%>
 
-
-
+  <h1 class="text-center">Welcome <%= current_user.email.split('@')[0].capitalize %></h1>
+  <%= link_to "Signout" , destroy_user_session_path, 'data-turbo-method': :delete , class:"btn btn-danger" %>
+<%else %>
+  <h1>Please Log in</h1>
 <% end %>
 
 
