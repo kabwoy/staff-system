@@ -1,22 +1,48 @@
 class LecturersController < ApplicationController
   before_action :set_lecturer, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /lecturers or /lecturers.json
   def index
     @lecturers = Lecturer.all
+    @user = User.new
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /lecturers/1 or /lecturers/1.json
   def show
+    @user = User.new
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /lecturers/new
   def new
     @lecturer = Lecturer.new
+
+    @user = User.new
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /lecturers/1/edit
   def edit
+    @user = User.new
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /lecturers or /lecturers.json

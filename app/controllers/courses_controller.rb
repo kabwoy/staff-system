@@ -1,22 +1,51 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+
+
 
   # GET /courses or /courses.json
   def index
+    @user = User.new
     @courses = Course.all
+
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /courses/1 or /courses/1.json
   def show
+    @user = User.new
+
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /courses/new
   def new
     @course = Course.new
+    @user = User.new
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /courses/1/edit
   def edit
+    @user = User.new
+    if current_user.admin?
+      render 'index'
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /courses or /courses.json
