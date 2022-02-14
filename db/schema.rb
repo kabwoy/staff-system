@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_053534) do
+ActiveRecord::Schema.define(version: 2022_02_14_063845) do
 
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "course_id", null: false
+    t.index ["course_id", "student_id"], name: "index_courses_students_on_course_id_and_student_id"
+    t.index ["student_id", "course_id"], name: "index_courses_students_on_student_id_and_course_id"
   end
 
   create_table "lecturers", force: :cascade do |t|
@@ -51,6 +58,19 @@ ActiveRecord::Schema.define(version: 2022_02_10_053534) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "course_id"
     t.index ["course_id"], name: "index_units_on_course_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

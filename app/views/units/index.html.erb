@@ -5,14 +5,12 @@
     <table class="table table-hover">
     <tr style="color: white;" class="bg-dark">
     <th>Unit Name</th>
-    <th>Course_Id</th>
     <th>Actions</th>
     </tr>
  
     <tr>
     <% @units.each do |unit| %>
       <td><%= unit.unit_name %></td>
-      <td><%= unit.course_id %> </td>
       <td><%= link_to "Show this unit", unit ,  class:"btn btn-primary" %> | <%=link_to "Edit This Unit" , edit_unit_path(unit) , class:"btn btn-warning"%></td>
     </tr>
     <% end %>
