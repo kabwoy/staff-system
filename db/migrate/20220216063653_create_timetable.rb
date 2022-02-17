@@ -7,7 +7,6 @@ class CreateTimetable < ActiveRecord::Migration[7.0]
       t.string :lecturer
       t.date :day
       t.string :unit
-
       t.timestamps
     end
   end
